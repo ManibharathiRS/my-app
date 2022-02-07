@@ -14,7 +14,7 @@ node{
 	          sh "${mvnHome}/bin/mvn sonar:sonar"
 	        }
 	    }
-    stage('Build Docker Image'){
+   stage('Build Docker Image'){
    sh 'docker build -t manibharathirs/myweb:0.0.2 .'
    }
    stage('Docker Image Push'){
@@ -34,9 +34,8 @@ node{
 	}catch(error){
 		//  do nothing if there is an exception
 	}
-    stage('Docker deployment'){
+   stage('Docker deployment'){
    sh 'docker run -d -p 8090:8080 --name tomcattest manibharathirs/myweb:0.0.2' 
    }
 }
 }
-   
